@@ -14,7 +14,7 @@ func TestCreateProduct_Success(t *testing.T) {
 
 	ctrl := gomock.NewController(t)
 	repo := repomock.NewMockProdRepository(ctrl)
-	NewService(repo)
+	NewProdService(repo)
 
 	data := dto.Product{
 		Name:     "Arvind",

@@ -17,6 +17,16 @@ type MockProdRepository struct {
 	recorder *MockProdRepositoryMockRecorder
 }
 
+func (m *MockProdRepository) FindProduct(product *Models.Product, id int) (err error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (m *MockProdRepository) GetAllProducts(products *[]Models.Product) (err error) {
+	//TODO implement me
+	panic("implement me")
+}
+
 // MockProdRepositoryMockRecorder is the mock recorder for MockProdRepository.
 type MockProdRepositoryMockRecorder struct {
 	mock *MockProdRepository

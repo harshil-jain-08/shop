@@ -27,12 +27,11 @@ func main() {
 		}
 	}()
 
-	Config.DB.AutoMigrate(&Models.SubOrder{})
-	Config.DB.AutoMigrate(&Models.Customer{})
 	Config.DB.AutoMigrate(&Models.Product{})
 	Config.DB.AutoMigrate(&Models.Order{})
 
-	Service.NewService(Repo.NewRepo())
+	Service.NewProdService(Repo.NewProductRepo())
+	Service.NewOrderService(Repo.NewOrderRepo())
 	r := Routes.SetupRouter()
 	// running
 	err = r.Run()
