@@ -1,7 +1,7 @@
 package Controllers
 
-import "C"
 import (
+	"C"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -32,7 +32,7 @@ func CreateOrder(c *gin.Context) {
 	} else {
 		productData.Quantity -= order.Quantity
 		if ok := Mutexes.ProdMutex.Lock(productData.ID); !ok {
-			C.JSON(http.StatusPreconditionFailed, gin.H{"error": "mutex Lock found"})
+			c.AbortWithStatusJSON(http.StatusPreconditionFailed, gin.H{"error": "mutex Lock found"})
 			return
 		}
 		defer Mutexes.ProdMutex.UnLock(productData.ID)

@@ -13,8 +13,7 @@ func TestCreateProduct_Success(t *testing.T) {
 	assertion := assert.New(t)
 
 	ctrl := gomock.NewController(t)
-	repo := repomock.NewMockProdRepository(ctrl)
-	NewProdService(repo)
+	repo := repomock.NewMockProductService(ctrl)
 
 	data := dto.Product{
 		Name:     "Arvind",
@@ -28,7 +27,7 @@ func TestCreateProduct_Success(t *testing.T) {
 		Price:    data.Price,
 	}
 
-	repo.EXPECT().SaveProduct(&expectedModel).Do(
+	repo.EXPECT().CreateProduct(&expectedModel).Do(
 		func(model *Models.Product) {
 			model.ID = 1
 		}).Return(nil).Times(1)

@@ -40,7 +40,7 @@ func UpdateProduct(c *gin.Context) {
 	}
 	// Mutexes should also be in service layer??
 	if ok := Mutexes.ProdMutex.Lock(prodId); !ok {
-		C.JSON(http.StatusPreconditionFailed, gin.H{"error": "mutex Lock found"})
+		c.JSON(http.StatusPreconditionFailed, gin.H{"error": "mutex Lock found"})
 		return
 	}
 	data, err = Service.ProdSer.UpdateProduct(data)
